@@ -1,0 +1,1 @@
+# argo-cd-image-updater
