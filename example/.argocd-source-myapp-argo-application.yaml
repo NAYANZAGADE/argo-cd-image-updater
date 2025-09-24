@@ -1,0 +1,3 @@
+kustomize:
+  images:
+  - nayanzagade7/flask-app:v1.2
