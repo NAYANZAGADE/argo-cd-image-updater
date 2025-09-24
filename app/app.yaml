@@ -1,61 +1,3 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: myapp-argo-application
-#   namespace: argocd
-#   finalizers:
-#     - resources-finalizers.argocd.argoproj.io
-# spec:
-#   project: default
-
-#   source:
-#     repoURL: https://github.com/NAYANZAGADE/argo-cd-image-updater.git
-#     targetRevision: HEAD
-#     path: .
-#   destination: 
-#     server: apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: myapp-argo-application
-#   namespace: argocd
-#   finalizers:
-#     - resources-finalizers.argocd.argoproj.io
-# spec:
-#   project: default
-
-#   source:
-#     repoURL: https://github.com/NAYANZAGADE/argo-prac.git
-#     targetRevision: HEAD
-#     path: myapp
-#   destination: 
-#     server: https://kubernetes.default.svc
-#     namespace: default
-
-#   syncPolicy:
-#     automated: 
-#       selfHeal: false
-#       prune: true
-#       allowEmpty: false
-#     syncOptions:
-#     - Validate=true
-#     - CreateNamespace=false
-#     - PrunePropagationPolicy=foreground 
-#     - PruneLast=true
-
-#     namespace: default
-
-#   syncPolicy:
-#     automated: 
-#       selfHeal: false
-#       prune: false
-#       allowEmpty: false
-#     syncOptions:
-#     - Validate=true
-#     - CreateNamespace=false
-#     - PrunePropagationPolicy=foreground 
-#     - PruneLast=true
-
-
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -66,7 +8,7 @@ metadata:
   annotations:
     argocd-image-updater.argoproj.io/image-list: nayanzagade7/flask-app:v1.x
     argocd-image-updater.argoproj.io/mywebapp.update-strategy: semver
-    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds  
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argo-cd/git-creds  
 spec:
   project: default
 
