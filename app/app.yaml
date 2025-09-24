@@ -61,8 +61,12 @@ kind: Application
 metadata:
   name: myapp-argo-application
   namespace: argo-cd
-  # finalizers:
-  #   - resources-finalizers.argocd.argoproj.io
+  finalizers:
+    - resources-finalizers.argocd.argoproj.io
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: nayanzagade7/flask-app:v1.x
+    argocd-image-updater.argoproj.io/mywebapp.update-strategy: semver
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds  
 spec:
   project: default
 
@@ -76,7 +80,7 @@ spec:
 
   syncPolicy:
     automated: 
-      selfHeal: false
+      selfHeal: true
       prune: true
       allowEmpty: false
     syncOptions:
