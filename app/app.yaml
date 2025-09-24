@@ -1,17 +1,75 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: myapp-argo-application
+#   namespace: argocd
+#   finalizers:
+#     - resources-finalizers.argocd.argoproj.io
+# spec:
+#   project: default
+
+#   source:
+#     repoURL: https://github.com/NAYANZAGADE/argo-cd-image-updater.git
+#     targetRevision: HEAD
+#     path: .
+#   destination: 
+#     server: apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: myapp-argo-application
+#   namespace: argocd
+#   finalizers:
+#     - resources-finalizers.argocd.argoproj.io
+# spec:
+#   project: default
+
+#   source:
+#     repoURL: https://github.com/NAYANZAGADE/argo-prac.git
+#     targetRevision: HEAD
+#     path: myapp
+#   destination: 
+#     server: https://kubernetes.default.svc
+#     namespace: default
+
+#   syncPolicy:
+#     automated: 
+#       selfHeal: false
+#       prune: true
+#       allowEmpty: false
+#     syncOptions:
+#     - Validate=true
+#     - CreateNamespace=false
+#     - PrunePropagationPolicy=foreground 
+#     - PruneLast=true
+
+#     namespace: default
+
+#   syncPolicy:
+#     automated: 
+#       selfHeal: false
+#       prune: false
+#       allowEmpty: false
+#     syncOptions:
+#     - Validate=true
+#     - CreateNamespace=false
+#     - PrunePropagationPolicy=foreground 
+#     - PruneLast=true
+
+
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: myapp-argo-application
-  namespace: argocd
-  finalizers:
-    - resources-finalizers.argocd.argoproj.io
+  namespace: argo-cd
+  # finalizers:
+  #   - resources-finalizers.argocd.argoproj.io
 spec:
   project: default
 
   source:
-    repoURL: https://github.com/NAYANZAGADE/argo-prac.git
+    repoURL: https://github.com/NAYANZAGADE/argo-cd-image-updater.git
     targetRevision: HEAD
-    path: myapp
+    path: example
   destination: 
     server: https://kubernetes.default.svc
     namespace: default
